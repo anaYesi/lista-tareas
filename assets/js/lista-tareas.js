@@ -60,13 +60,50 @@ var arrayDatos=[
     "completed": true
   }
 ];
- var html = "";
- for (var i =0; i<arrayDatos.length;i++)
- {
-  var dato_1 = arrayDatos[i];
+  var aLista=[];
+  var listando = document.getElementById('listasBiñetas');
+  function ListarTarea(tarea) 
+  {
+    this.tarea = tarea.toLowerCase();
+  }
+  ListarTarea.prototype.toHTML = function () 
+  {
+    var html = '';
+    html += "<li>"+this.tarea.toUpperCase()+"</li>";
+    html += '<br><br>';
+    return html;
+  }
+  function mergeHTML ()
+  {
+    var html = '';
+    for (var i=0; i<aLista.length; i++)
+    {
+      html += aLista[i].toHTML();
+    }
+    return html;
+  }
+  function printHTML (html)
+  {
+    listando.innerHTML = html;
+    listando.innerHTML = html;
+  }
+  var botonAñadir = document.getElementById('añadirBtn');
+  botonAñadir.onclick = function () 
+  {
+    var agregar = document.getElementById('añadirInput').value;
+    var l  = new ListarTarea(tarea);
+    aLista.push(l);
+    document.getElementById('añadirInput').value="";
+    printHTML(mergeHTML());
+
+};
+  var mostrar_string = "";
+  for (var i =0; i<arrayDatos.length;i++)
+  {
+    var dato_1 = arrayDatos[i];
   //alert (dato_1);
-  var s ="<div>"+ "Tarea "+ (i+1)+": " + dato_1.title +"</div>";
-    html += s;
+    var s ="<div>"+"<li>"+ "Tarea "+ (i+1)+": " + dato_1.title +"</div>";
+    mostrar_string += s;
   
- }
-document.write( html );
+  }
+document.write( mostrar_string  );
