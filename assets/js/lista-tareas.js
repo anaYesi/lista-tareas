@@ -105,8 +105,13 @@ var aDatos=[
     //imprimirArray(concatenarArray());
 
 };
-
 listando.innerHTML = concatenarArray();
- 
- 
- 
+for(var i = 0; i< aDatos.length; i++)
+{
+  aDatos[i].addEventListener('clic',redireccionar,false);
+}
+var tach;
+function redireccionar(event)
+{
+
+}
