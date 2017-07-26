@@ -1,109 +1,112 @@
-var arrayDatos=[
+var aDatos=[
   {
     "userId": 1,
     "id": 1,
-    "title": "delectus aut autem",
+    "title": "Delectus aut autem",
     "completed": false
   },
   {
     "userId": 1,
     "id": 2,
-    "title": "quis ut nam facilis et officia qui",
+    "title": "Quis ut nam facilis et officia qui",
     "completed": false
   },
   {
     "userId": 1,
     "id": 3,
-    "title": "fugiat veniam minus",
+    "title": "Fugiat veniam minus",
     "completed": false
   },
   {
     "userId": 1,
     "id": 4,
-    "title": "et porro tempora",
+    "title": "Et porro tempora",
     "completed": true
   },
   {
     "userId": 1,
     "id": 5,
-    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "title": "Laboriosam mollitia et enim quasi adipisci quia provident illum",
     "completed": false
   },
   {
     "userId": 1,
     "id": 6,
-    "title": "qui ullam ratione quibusdam voluptatem quia omnis",
+    "title": "Qui ullam ratione quibusdam voluptatem quia omnis",
     "completed": false
   },
   {
     "userId": 1,
     "id": 7,
-    "title": "illo expedita consequatur quia in",
+    "title": "Illo expedita consequatur quia in",
     "completed": false
   },
   {
     "userId": 1,
     "id": 8,
-    "title": "quo adipisci enim quam ut ab",
+    "title": "Quo adipisci enim quam ut ab",
     "completed": true
   },
   {
     "userId": 1,
     "id": 9,
-    "title": "molestiae perspiciatis ipsa",
+    "title": "Molestiae perspiciatis ipsa",
     "completed": false
   },
   {
     "userId": 1,
     "id": 10,
-    "title": "illo est ratione doloremque quia maiores aut",
+    "title": "Illo est ratione doloremque quia maiores aut",
     "completed": true
   }
 ];
-  var aLista=[];
-  var listando = document.getElementById('listasBiñetas');
-  function ListarTarea(tarea) 
+
+  //var aDatos=[];
+  var listando = document.getElementById('mostrar');
+  function ListarTarea(title) 
   {
-    this.tarea = tarea.toLowerCase();
+    this.userId = 1;
+    this.id = 1;
+    this.title = title;
+    this.completed= false;
   }
   ListarTarea.prototype.toHTML = function () 
   {
-    var html = '';
-    html += "<li>"+this.tarea.toUpperCase()+"</li>";
-    html += '<br><br>';
-    return html;
+    var la = '';
+    la += this.title;
+    
+    return la;
+    console.log(la);
   }
-  function mergeHTML ()
+  function concatenarArray ()
   {
     var html = '';
-    for (var i=0; i<aLista.length; i++)
-    {
-      html += aLista[i].toHTML();
-    }
+    for (var i =0; i<aDatos.length;i++)
+ {
+  var dato_1 = aDatos[i];
+  var s = "<div>" + "<li>"+ dato_1.title +"</li>"+"</div>";
+    html += s;
+ 
+ }
     return html;
   }
-  function printHTML (html)
+  /*function imprimirArray (html)
   {
     listando.innerHTML = html;
-    listando.innerHTML = html;
-  }
-  var botonAñadir = document.getElementById('añadirBtn');
-  botonAñadir.onclick = function () 
+  }*/
+  var botonAgregar = document.getElementById('agregarBtn');
+  botonAgregar.onclick = function () 
   {
-    var agregar = document.getElementById('añadirInput').value;
-    var l  = new ListarTarea(tarea);
-    aLista.push(l);
-    document.getElementById('añadirInput').value="";
-    printHTML(mergeHTML());
+    var agregar = document.getElementById('agregarInput').value;
+    var list = new ListarTarea(agregar);
+    aDatos.push(list);
+    document.getElementById('agregarInput').value="";
+    listando.innerHTML = concatenarArray();
+    //imprimirArray(concatenarArray());
 
 };
-  var mostrar_string = "";
-  for (var i =0; i<arrayDatos.length;i++)
-  {
-    var dato_1 = arrayDatos[i];
-  //alert (dato_1);
-    var s ="<div>"+"<li>"+ "Tarea "+ (i+1)+": " + dato_1.title +"</div>";
-    mostrar_string += s;
-  
-  }
-document.write( mostrar_string  );
+
+listando.innerHTML = concatenarArray();
+ 
+ 
+ 
