@@ -106,12 +106,17 @@ var aDatos=[
 
 };
 listando.innerHTML = concatenarArray();
+
+var vinietas = document.getElementsByTagName('li');
 for(var i = 0; i< aDatos.length; i++)
 {
-  aDatos[i].addEventListener('clic',redireccionar,false);
+  vinietas[i].addEventListener('click',redireccionar,false);
 }
-var tach;
+
 function redireccionar(event)
 {
-
+  var a = event.target.textContent;
+  var tacharDiv =document.getElementById("tacharDiv");
+  tacharDiv.innerHTML = a;
+  var vinieta = event.target;
 }
