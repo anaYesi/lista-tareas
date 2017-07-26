@@ -62,48 +62,39 @@ var aDatos=[
 ];
 
   //var aDatos=[];
-  var listando = document.getElementById('mostrar');
-  function ListarTarea(title) 
+var listando = document.getElementById('mostrar');
+function ListarTarea(title) 
+{
+  this.userId = 1;
+  this.id = 1;
+  this.title = title;
+  this.completed= false;
+}
+
+function concatenarArray ()
+{
+  var html = '';
+  for (var i =0; i<aDatos.length;i++)
   {
-    this.userId = 1;
-    this.id = 1;
-    this.title = title;
-    this.completed= false;
-  }
-  ListarTarea.prototype.toHTML = function () 
-  {
-    var la = '';
-    la += this.title;
-    
-    return la;
-    console.log(la);
-  }
-  function concatenarArray ()
-  {
-    var html = '';
-    for (var i =0; i<aDatos.length;i++)
- {
-  var dato_1 = aDatos[i];
-  var s = "<div>" + "<li>"+ dato_1.title +"</li>"+"</div>";
+    var dato_1 = aDatos[i];
+    var s = "<div>" + "<li>"+ dato_1.title +"</li>"+"</div>";
     html += s;
- 
- }
-    return html;
   }
+    return html;
+}
   /*function imprimirArray (html)
   {
     listando.innerHTML = html;
   }*/
-  var botonAgregar = document.getElementById('agregarBtn');
-  botonAgregar.onclick = function () 
-  {
-    var agregar = document.getElementById('agregarInput').value;
-    var list = new ListarTarea(agregar);
-    aDatos.push(list);
-    document.getElementById('agregarInput').value="";
-    listando.innerHTML = concatenarArray();
+var botonAgregar = document.getElementById('agregarBtn');
+botonAgregar.onclick = function () 
+{
+  var agregar = document.getElementById('agregarInput').value;
+  var list = new ListarTarea(agregar);
+  aDatos.push(list);
+  document.getElementById('agregarInput').value="";
+  listando.innerHTML = concatenarArray();
     //imprimirArray(concatenarArray());
-
 };
 listando.innerHTML = concatenarArray();
 
